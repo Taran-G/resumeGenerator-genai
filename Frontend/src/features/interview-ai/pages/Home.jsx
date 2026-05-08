@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import "../style/home.scss"
+import { useAuth } from '../../auth/hooks/useAuth.js'
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
 
@@ -8,9 +9,18 @@ const Home = () => {
     const { loading, generateReport,reports } = useInterview()
     const [ jobDescription, setJobDescription ] = useState("")
     const [ selfDescription, setSelfDescription ] = useState("")
+    const [uploadedFileName, setUploadedFileName] = useState("");
     const resumeInputRef = useRef()
 
     const navigate = useNavigate()
+
+    const { handleLogout } = useAuth()
+    const userLogout = async ()=>{
+        const response = await handleLogout()
+        if(response.success){
+            navigate("/Login")
+        }
+    }
 
     const handleGenerateReport = async () => {
         const resumeFile = resumeInputRef.current.files[ 0 ]
@@ -18,16 +28,35 @@ const Home = () => {
         navigate(`/interview/${data._id}`)
     }
 
-    if (loading) {
-        return (
-            <main className='loading-screen'>
-                <h1>Loading your interview plan...</h1>
-            </main>
-        )
-    }
+    
 
     return (
         <div className='home-page'>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem 1.5rem 0' }}>
+    <button style={{
+        display: 'flex', alignItems: 'center', gap: '7px',
+        padding: '8px 16px',
+        backgroundColor: 'transparent',
+        border: '1px solid #2e2e2e',
+        borderRadius: '8px',
+        color: '#9a9a9a',
+        fontSize: '0.82rem',
+        fontWeight: '500',
+        cursor: 'pointer',
+        transition: 'border-color 0.2s, color 0.2s',
+    }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = '#c81e1e'; e.currentTarget.style.color = '#c81e1e' }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = '#2e2e2e'; e.currentTarget.style.color = '#9a9a9a' }}
+        onClick={() => {userLogout()}}
+    >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+    </button>
+</div>
 
             {/* Page Header */}
             <header className='page-header'>
@@ -81,12 +110,33 @@ const Home = () => {
                                 </span>
                                 <p className='dropzone__title'>Click to upload or drag &amp; drop</p>
                                 <p className='dropzone__subtitle'>PDF or DOCX (Max 5MB)</p>
-                                <input ref={resumeInputRef} hidden type='file' id='resume' name='resume' accept='.pdf,.docx' />
+                                {
+    uploadedFileName && (
+        <p className='dropzone__filename'>
+            Uploaded: {uploadedFileName}
+        </p>
+    )
+}
+                                <input
+    ref={resumeInputRef}
+    hidden
+    type='file'
+    id='resume'
+    name='resume'
+    accept='.pdf,.docx'
+    onChange={(e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            setUploadedFileName(file.name);
+        }
+    }}
+/> 
                             </label>
                         </div>
 
                         {/* OR Divider */}
-                        <div className='or-divider'><span>OR</span></div>
+                        <div className='or-divider'><span></span></div>
 
                         {/* Quick Self-Description */}
                         <div className='self-description'>

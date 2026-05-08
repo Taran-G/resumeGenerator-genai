@@ -48,6 +48,8 @@ return res.status(200).json({
 }
 const loginUserController = async (req, res) => {
   const { email, password } = req.body;
+  console.log("Login body:", req.body);
+console.log("Email received:", email);
 
   if (!email || !password) {
     return res.status(400).json({
@@ -56,6 +58,8 @@ const loginUserController = async (req, res) => {
   }
 
   const checkdatabase = await userModel.findOne({ email });
+
+console.log("USER FOUND:", checkdatabase)
 
   if (!checkdatabase) {
     return res.status(400).json({
