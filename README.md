@@ -12,8 +12,11 @@ A **full-stack web application** that uses **Google Gemini GenAI** to generate p
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![React](https://img.shields.io/badge/React-Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Google Gemini](https://img.shields.io/badge/Google-Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Google Gemini](https://img.shields.io/badge/Google-Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+[![bcrypt](https://img.shields.io/badge/bcrypt-Password_Hashing-FF6B6B?style=for-the-badge&logo=lock&logoColor=white)](https://www.npmjs.com/package/bcrypt)
+[![Puppeteer](https://img.shields.io/badge/Puppeteer-PDF_Export-40B5A4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pptr.dev/)
 
 </div>
 
