@@ -1,12 +1,14 @@
 import { useAuth } from "../hooks/useAuth";
 import { Navigate } from "react-router";
+import Loader from "./button";
 
  const Protected = ({children})=>{
     const{loading,user} = useAuth()
+    
 
     if(loading){
         return(
-            <main><h1>....Loading</h1></main>
+            <main><Loader /></main>
         )
     }
     if(!user){

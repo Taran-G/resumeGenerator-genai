@@ -3,6 +3,7 @@ import '../style/interview.scss'
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../../auth/hooks/useAuth.js'
+import Loader from '../../auth/components/button.jsx'
 
 
 
@@ -78,7 +79,7 @@ const Interview = () => {
     if (loading || !report) {
         return (
             <main className='loading-screen'>
-                <h1>Loading your interview plan...</h1>
+                <h1><Loader /></h1>
             </main>
         )
     }
