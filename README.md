@@ -26,6 +26,7 @@ A **full-stack web application** that uses **Google Gemini GenAI** to generate p
 
 Resume-GenAI takes the pain out of resume building. Users upload their existing resume (PDF), the backend parses the text, sends it to **Google Gemini** with a strict **structured schema**, and returns polished resume content rendered in HTML. **Puppeteer** then converts that HTML into a pixel-perfect, downloadable PDF resume.
 
+<img width="1218" height="1060" alt="Image" src="https://github.com/user-attachments/assets/3b88b8f5-ca53-4b32-9dd9-cfe31585736a" />
 <img width="1862" height="1080" alt="Image" src="https://github.com/user-attachments/assets/ef36cda6-83f1-49a7-a40c-8566777ed227" />
 <img width="1884" height="1080" alt="Image" src="https://github.com/user-attachments/assets/0b0139af-bc5e-4034-a0ca-2284860ec966" />
 <img width="1844" height="1079" alt="Image" src="https://github.com/user-attachments/assets/f6d225f1-cdaa-40c4-a7eb-4311c289a2be" />
