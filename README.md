@@ -1,331 +1,374 @@
-
 <div align="center">
 
-# 📄 Resume-GenAI
+# 🚀 InterviewPrep AI
 
-### AI-Powered Resume Generator & Interview Planner
+### AI-Powered Resume Optimizer, Interview Planner & Career Roadmap Generator
 
-A **full-stack web application** that uses **Google Gemini GenAI** to generate professional, structured resumes and interview reports. Upload your existing resume, let the AI analyze it, and receive a beautifully formatted, downloadable PDF — all secured behind a robust JWT authentication system.
+<p align="center">
+  Upload your resume and target job description to generate an optimized resume, interview preparation questions, and a personalized roadmap to land your dream role.
+</p>
 
 <br/>
 
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![React](https://img.shields.io/badge/React-Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Google Gemini](https://img.shields.io/badge/Google-Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
-[![bcrypt](https://img.shields.io/badge/bcrypt-Password_Hashing-FF6B6B?style=for-the-badge&logo=lock&logoColor=white)](https://www.npmjs.com/package/bcrypt)
-[![Puppeteer](https://img.shields.io/badge/Puppeteer-PDF_Export-40B5A4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pptr.dev/)
+<p align="center">
+
+<img src="https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Resume-Optimization-success?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Technical-Interview_Preparation-orange?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Behavioral-Interview_Questions-red?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Career-Roadmap-purple?style=for-the-badge" />
+<img src="https://img.shields.io/badge/PDF-Resume_Export-black?style=for-the-badge" />
+
+</p>
+
+<br/>
+
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![React](https://img.shields.io/badge/React-Vite-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Google Gemini](https://img.shields.io/badge/Google-Gemini_AI-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/)
+[![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+[![Puppeteer](https://img.shields.io/badge/Puppeteer-PDF_Export-40B5A4?style=flat-square&logo=googlechrome&logoColor=white)](https://pptr.dev/)
 
 </div>
 
 ---
 
-## 📸 Overview
+# 📸 Overview
 
-Resume-GenAI takes the pain out of resume building. Users upload their existing resume (PDF), the backend parses the text, sends it to **Google Gemini** with a strict **structured schema**, and returns polished resume content rendered in HTML. **Puppeteer** then converts that HTML into a pixel-perfect, downloadable PDF resume.
+InterviewPrep AI is a full-stack AI-powered platform that helps users:
 
-<img width="1218" height="1060" alt="Image" src="https://github.com/user-attachments/assets/3b88b8f5-ca53-4b32-9dd9-cfe31585736a" />
-<img width="1862" height="1080" alt="Image" src="https://github.com/user-attachments/assets/ef36cda6-83f1-49a7-a40c-8566777ed227" />
-<img width="1884" height="1080" alt="Image" src="https://github.com/user-attachments/assets/0b0139af-bc5e-4034-a0ca-2284860ec966" />
-<img width="1844" height="1079" alt="Image" src="https://github.com/user-attachments/assets/f6d225f1-cdaa-40c4-a7eb-4311c289a2be" />
-<img width="1847" height="1080" alt="Image" src="https://github.com/user-attachments/assets/04f9b76b-af9a-4efd-8ccd-79d57040a880" />
-<img width="1870" height="1078" alt="Image" src="https://github.com/user-attachments/assets/e389586a-11b0-4ef0-b0c7-99a6a77b1e41" />
+- Optimize resumes according to target job descriptions
+- Generate technical interview questions
+- Generate behavioral interview questions
+- Understand interviewer intentions
+- Learn answer strategies
+- Identify skill gaps
+- Build a personalized preparation roadmap
+- Export professional AI-generated resumes as PDFs
 
-## ✨ Features
+The application uses **Google Gemini AI** with structured schema prompting to generate highly organized and reliable outputs.
 
-### 🤖 AI & Document Processing
-- **Gemini GenAI Integration** — Structured schema-based prompting for consistent, professional resume output
-- **PDF Parsing** — Extracts raw text from uploaded resume PDFs using `pdf-parse`
-- **Multer Buffer Uploads** — In-memory file handling via `multer` (no disk writes needed)
-- **Puppeteer PDF Export** — Converts AI-generated HTML output into a downloadable PDF resume
-- **Interview Report Generation** — AI-powered interview analysis and structured feedback
-
-### 🔐 Authentication & Security
-- **JWT Access & Refresh Tokens** — Secure, stateless session management via HTTP-only cookies
-- **Token Blacklisting** — Revoked tokens stored in MongoDB to prevent reuse after logout
-- **bcrypt Password Hashing** — Industry-standard password hashing with salt rounds
-- **Protected Routes** — Middleware-guarded API endpoints and frontend route guards
-- **Zod Schema Validation** — Runtime request validation on all API inputs
-
-### 🎨 Frontend
-- **React + Vite** — Fast, modern frontend tooling
-- **Feature-Based Architecture** — Auth and Interview-AI are fully isolated feature modules
-- **React Context API** — Global state for authentication and interview sessions
-- **SCSS Styling** — Modular stylesheets per feature and component
-- **React Router** — Client-side routing with protected route wrappers
+The generated resume is dynamically converted into a downloadable PDF using **Puppeteer**.
 
 ---
 
-## 🗂 Project Structure
+# 🖼️ Screenshots
 
-```
-RESUME-GENAI/
+<img width="1218" height="1060" alt="Image" src="https://github.com/user-attachments/assets/3b88b8f5-ca53-4b32-9dd9-cfe31585736a" />
+
+<img width="1862" height="1080" alt="Image" src="https://github.com/user-attachments/assets/ef36cda6-83f1-49a7-a40c-8566777ed227" />
+
+<img width="1884" height="1080" alt="Image" src="https://github.com/user-attachments/assets/0b0139af-bc5e-4034-a0ca-2284860ec966" />
+
+<img width="1844" height="1079" alt="Image" src="https://github.com/user-attachments/assets/f6d225f1-cdaa-40c4-a7eb-4311c289a2be" />
+
+<img width="1847" height="1080" alt="Image" src="https://github.com/user-attachments/assets/04f9b76b-af9a-4efd-8ccd-79d57040a880" />
+
+<img width="1870" height="1078" alt="Image" src="https://github.com/user-attachments/assets/e389586a-11b0-4ef0-b0c7-99a6a77b1e41" />
+
+---
+
+# ✨ Features
+
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🤖 AI Resume Optimization</h3>
+      <p>
+        Optimizes resumes according to the target job description and improves resume content for better role alignment.
+      </p>
+    </td>
+    <td width="50%">
+      <h3>🎯 Interview Question Generator</h3>
+      <p>
+        Generates role-specific technical and behavioral interview questions with detailed answer guidance.
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="50%">
+      <h3>🧠 Interview Strategy Analysis</h3>
+      <p>
+        Explains what interviewers are actually evaluating behind each question.
+      </p>
+    </td>
+    <td width="50%">
+      <h3>📈 Career Roadmap Generator</h3>
+      <p>
+        Creates a personalized preparation roadmap to help users land their target role.
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="50%">
+      <h3>📄 AI PDF Resume Export</h3>
+      <p>
+        Generates professional downloadable PDF resumes using Puppeteer.
+      </p>
+    </td>
+    <td width="50%">
+      <h3>🔐 Authentication & Security</h3>
+      <p>
+        Uses JWT authentication, HTTP-only cookies, bcrypt hashing, protected routes, and token blacklisting.
+      </p>
+    </td>
+  </tr>
+</table>
+
+---
+
+# 🗂️ Project Structure
+
+```bash
+INTERVIEWPREP-AI/
 │
 ├── Backend/
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── database.js                 # MongoDB connection setup
 │   │   ├── controller/
-│   │   │   ├── interview.controller.js     # Interview generation & report logic
-│   │   │   └── user.controller.js          # Register, login, logout, refresh
 │   │   ├── middleware/
-│   │   │   ├── auth.middleware.js          # JWT verification & route protection
-│   │   │   └── file.middleware.js          # Multer config for PDF buffer uploads
 │   │   ├── model/
-│   │   │   ├── blacklist.model.js          # Blacklisted JWT tokens (MongoDB)
-│   │   │   ├── interviewReport.model.js    # Saved AI-generated interview reports
-│   │   │   └── user.model.js               # User schema with bcrypt hashed passwords
 │   │   ├── routes/
-│   │   │   ├── interview.routes.js         # /api/interview route definitions
-│   │   │   └── user.routes.js              # /api/user route definitions
 │   │   ├── services/
-│   │   │   └── ai.service.js               # Gemini API calls & structured schema logic
-│   │   └── app.js                          # Express app, middleware & route mounting
-│   ├── .env                                # Environment variables (not committed)
-│   ├── .gitignore
+│   │   └── app.js
+│   │
+│   ├── .env
 │   ├── package.json
-│   └── server.js                           # Server entry point
+│   └── server.js
 │
 └── Frontend/
-    ├── public/
     ├── src/
-    │   ├── assets/                         # Static images & icons
+    │   ├── assets/
     │   ├── features/
-    │   │   ├── auth/                       # ── Authentication Feature Module ──
-    │   │   │   ├── components/
-    │   │   │   │   └── protected.jsx       # Protected route wrapper component
-    │   │   │   ├── hooks/
-    │   │   │   │   └── useAuth.js          # Custom hook for auth state & actions
-    │   │   │   ├── pages/
-    │   │   │   │   ├── login.jsx           # Login page
-    │   │   │   │   └── register.jsx        # Registration page
-    │   │   │   ├── services/
-    │   │   │   │   └── auth.api.js         # Axios calls to auth endpoints
-    │   │   │   ├── auth.context.jsx        # Auth context provider
-    │   │   │   └── auth.form.scss          # Auth form styles
-    │   │   │
-    │   │   └── interview-ai/               # ── AI Interview Feature Module ──
-    │   │       ├── hooks/
-    │   │       │   └── useInterview.js     # Custom hook for interview state
-    │   │       ├── pages/
-    │   │       │   ├── Home.jsx            # Dashboard / landing page
-    │   │       │   └── interview.jsx       # AI resume generation & interview page
-    │   │       ├── services/
-    │   │       │   └── interview.api.js    # Axios calls to interview endpoints
-    │   │       ├── style/
-    │   │       │   ├── home.scss
-    │   │       │   └── interview.scss
-    │   │       └── interview.context.jsx   # Interview context provider
+    │   │   ├── auth/
+    │   │   └── interview-ai/
     │   │
     │   ├── style/
-    │   │   └── button.scss                 # Shared button styles
-    │   ├── App.jsx                         # Root component
-    │   ├── app.routes.jsx                  # Application route definitions
-    │   ├── index.scss                      # Global styles
-    │   └── main.jsx                        # React DOM entry point
-    ├── index.html
-    ├── vite.config.js
-    ├── eslint.config.js
-    └── package.json
+    │   ├── App.jsx
+    │   ├── app.routes.jsx
+    │   ├── index.scss
+    │   └── main.jsx
+    │
+    ├── package.json
+    └── vite.config.js
 ```
 
 ---
 
-## 🛠 Tech Stack
+# 🛠️ Tech Stack
 
-### Backend
+## Backend
+
 | Technology | Purpose |
 |---|---|
-| **Node.js + Express** | REST API server |
-| **MongoDB + Mongoose** | Database & ODM |
-| **Google Gemini AI** | Resume & interview content generation with structured schema |
-| **Puppeteer** | Headless browser — converts AI HTML output to downloadable PDF |
-| **pdf-parse** | Extracts text from user-uploaded PDF resumes |
-| **Multer** | In-memory file upload buffer middleware |
-| **JWT (jsonwebtoken)** | Access & refresh token generation and verification |
-| **bcrypt** | Secure password hashing with salt rounds |
-| **Zod** | Runtime API request schema validation |
-| **Cookie-Parser** | HTTP-only cookie handling for tokens |
-
-### Frontend
-| Technology | Purpose |
-|---|---|
-| **React 18 + Vite** | UI framework & build tool |
-| **React Router v6** | Client-side routing & protected routes |
-| **Context API** | Global auth & interview state management |
-| **Axios** | HTTP client with interceptors for API calls |
-| **SCSS (Sass)** | Modular, maintainable component styling |
+| Node.js + Express | REST API Server |
+| MongoDB + Mongoose | Database & ODM |
+| Google Gemini AI | Resume & Interview Generation |
+| Puppeteer | PDF Generation |
+| pdf-parse | Resume Text Extraction |
+| Multer | File Upload Handling |
+| JWT | Authentication |
+| bcrypt | Password Hashing |
+| Zod | Runtime Validation |
 
 ---
 
-## 🚀 Getting Started
+## Frontend
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) `v18+`
-- [MongoDB](https://www.mongodb.com/) (local instance or MongoDB Atlas)
-- [Google Gemini API Key](https://ai.google.dev/)
+| Technology | Purpose |
+|---|---|
+| React + Vite | Frontend Framework |
+| React Router v6 | Routing |
+| Context API | Global State Management |
+| Axios | API Communication |
+| SCSS | Styling |
 
 ---
 
-### 1. Clone the Repository
+# 🚀 Getting Started
+
+## 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/Taran-G/resumeGenerator-genai.git
+
 cd resumeGenerator-genai
 ```
 
 ---
 
-### 2. Set Up the Backend
+# ⚙️ Backend Setup
 
 ```bash
 cd Backend
+
 npm install
 ```
 
-Create your `.env` file in the `Backend/` root:
+Create `.env`
 
 ```env
-# Server
 PORT=5000
-NODE_ENV=development
 
-# Database
-MONGO_URI=mongodb://localhost:27017/resume-genai
+MONGO_URI=your_mongodb_uri
 
-# JWT
-JWT_ACCESS_SECRET=your_strong_access_secret_here
-JWT_REFRESH_SECRET=your_strong_refresh_secret_here
+JWT_ACCESS_SECRET=your_access_secret
+
+JWT_REFRESH_SECRET=your_refresh_secret
+
 JWT_ACCESS_EXPIRES=15m
+
 JWT_REFRESH_EXPIRES=7d
 
-# Google Gemini AI
-GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_API_KEY=your_gemini_api_key
 
-# Frontend URL (for CORS)
 CLIENT_URL=http://localhost:5173
 ```
 
-Start the backend server:
+Run Backend:
 
 ```bash
-npm run dev     # development with nodemon
-# or
-npm start       # production
-```
-
-> Backend runs at `http://localhost:5000`
-
----
-
-### 3. Set Up the Frontend
-
-```bash
-cd ../Frontend
-npm install
 npm run dev
 ```
 
-> Frontend runs at `http://localhost:5173`
-
 ---
 
-## 🔌 API Reference
+# 💻 Frontend Setup
 
-### Auth Endpoints — `/api/user`
+```bash
+cd Frontend
 
-| Method | Endpoint | Description | Protected |
-|---|---|---|---|
-| `POST` | `/register` | Register a new user | ❌ |
-| `POST` | `/login` | Login & receive JWT cookies | ❌ |
-| `POST` | `/logout` | Logout & blacklist refresh token | ✅ |
-| `POST` | `/refresh` | Issue new access token via refresh token | ✅ |
+npm install
 
-### Interview & Resume Endpoints — `/api/interview`
-
-| Method | Endpoint | Description | Protected |
-|---|---|---|---|
-| `POST` | `/generate` | Upload PDF → parse → Gemini AI → structured resume | ✅ |
-| `GET` | `/report` | Retrieve saved interview reports | ✅ |
-| `GET` | `/download` | Download AI-generated resume as a PDF file | ✅ |
-
----
-
-## 🔐 Authentication Flow
-
-```
-Register  →  bcrypt hashes password  →  user saved to MongoDB
-
-Login     →  password verified  →  JWT access token (15m) + refresh token (7d)
-                                    set as HTTP-only cookies
-
-Request   →  auth.middleware.js verifies access token on every protected route
-
-Expired   →  client calls /refresh  →  new access token issued (if refresh valid)
-
-Logout    →  refresh token added to blacklist.model.js  →  cookies cleared
-             (blacklisted tokens rejected on all future requests)
+npm run dev
 ```
 
 ---
 
-## 🤖 AI Resume Generation Flow
+# 🔌 API Routes
 
-```
-1. User uploads their current resume (PDF file)
-2. file.middleware.js (Multer) captures it as an in-memory buffer
-3. pdf-parse reads the buffer and extracts raw text content
-4. ai.service.js builds a structured Gemini prompt with a defined JSON schema
-5. Gemini returns a validated, structured resume data object
-6. The structured data is injected into an HTML resume template
-7. Puppeteer launches a headless browser, renders the HTML, and exports a PDF
-8. The PDF is streamed back to the client as a file download
-```
+## Authentication Routes
 
----
-
-## 📂 Environment Variables
-
-| Variable | Description | Required |
+| Method | Route | Description |
 |---|---|---|
-| `PORT` | Backend server port | ✅ |
-| `MONGO_URI` | MongoDB connection string | ✅ |
-| `JWT_ACCESS_SECRET` | Secret for signing access tokens | ✅ |
-| `JWT_REFRESH_SECRET` | Secret for signing refresh tokens | ✅ |
-| `JWT_ACCESS_EXPIRES` | Access token expiry (e.g. `15m`) | ✅ |
-| `JWT_REFRESH_EXPIRES` | Refresh token expiry (e.g. `7d`) | ✅ |
-| `GEMINI_API_KEY` | Google Gemini API key | ✅ |
-| `CLIENT_URL` | Frontend origin URL for CORS | ✅ |
-
-> ⚠️ **Never commit your `.env` file.** It is listed in `.gitignore` by default.
+| POST | `/api/user/register` | Register User |
+| POST | `/api/user/login` | Login User |
+| POST | `/api/user/logout` | Logout User |
+| POST | `/api/user/refresh` | Refresh Access Token |
 
 ---
 
-## 🤝 Contributing
+## Interview Routes
 
-Contributions are welcome!
-
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m "feat: describe your feature"`
-4. Push to the branch: `git push origin feature/your-feature`
-5. Open a Pull Request
+| Method | Route | Description |
+|---|---|---|
+| POST | `/api/interview/generate` | Generate AI Interview Report |
+| GET | `/api/interview/report/:id` | Fetch Interview Report |
+| GET | `/api/interview/download/:id` | Download Generated PDF |
 
 ---
 
-## 📜 License
+# 🔐 Authentication Flow
 
-This project is licensed under the [MIT License](LICENSE).
+```text
+Register
+   ↓
+Password hashed using bcrypt
+   ↓
+User stored in MongoDB
+   ↓
+Login generates JWT access & refresh tokens
+   ↓
+Tokens stored as HTTP-only cookies
+   ↓
+Protected routes verified using middleware
+   ↓
+Refresh route generates new access token
+   ↓
+Logout blacklists refresh token
+```
+
+---
+
+# 🤖 AI Generation Flow
+
+```text
+1. User uploads resume PDF
+
+2. Multer stores file in memory buffer
+
+3. pdf-parse extracts resume text
+
+4. Gemini AI receives:
+   - Resume
+   - Self Description
+   - Job Description
+
+5. AI generates:
+   - Optimized Resume
+   - Technical Questions
+   - Behavioral Questions
+   - Match Score
+   - Skill Gaps
+   - Career Roadmap
+
+6. HTML template generated dynamically
+
+7. Puppeteer converts HTML into PDF
+
+8. Final report stored in MongoDB
+```
+
+---
+
+# 🌍 Environment Variables
+
+| Variable | Description |
+|---|---|
+| PORT | Backend Port |
+| MONGO_URI | MongoDB Connection URI |
+| JWT_ACCESS_SECRET | JWT Access Secret |
+| JWT_REFRESH_SECRET | JWT Refresh Secret |
+| JWT_ACCESS_EXPIRES | Access Token Expiry |
+| JWT_REFRESH_EXPIRES | Refresh Token Expiry |
+| GEMINI_API_KEY | Google Gemini API Key |
+| CLIENT_URL | Frontend URL |
+
+---
+
+# 🤝 Contributing
+
+```bash
+1. Fork Repository
+
+2. Create Feature Branch
+git checkout -b feature/your-feature
+
+3. Commit Changes
+git commit -m "Added new feature"
+
+4. Push Changes
+git push origin feature/your-feature
+
+5. Open Pull Request
+```
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by [Taran-G](https://github.com/Taran-G)**
+## 💙 Built with ❤️ by Taran-G
 
-*Powered by Google Gemini AI · Node.js · React · MongoDB*
+Powered by Google Gemini AI • React • Node.js • MongoDB
 
 </div>
